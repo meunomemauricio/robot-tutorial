@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List ({{ unchecked }})</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}" />
+</head>
+<body>
+    {% if todo_items %}
+        <form action="{% url 'todo:check' %}" method="post">
+            {% csrf_token %}
+            {% for item in todo_items %}
+                <div class="{% if item.checked %}checked{% endif %}">
+                <input type="radio" name="item-id" value="{{ item.id }}"
+                       onChange="this.form.submit()">
+                    {{ item.priority }} - {{ item.description }} - {{ item.checked }}
+                </div>
+            {% endfor %}
+        </form>
+
+    {% else %}
+        <p>No items on your list! Start by adding one below...</p>
+    {% endif %}
+
+    <form action="{% url 'todo:insert' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="New" />
+    </form>
+
+    <a href="{% url 'todo:clear' %}" onclick="return confirm('Are you sure?');">Delete All</a>
+</body>
+</html>
