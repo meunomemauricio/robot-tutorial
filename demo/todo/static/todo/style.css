@@ -2,3 +2,71 @@
 .checked {
     text-decoration: line-through;
 }
+
+a.prio0 {
+    color: #616161;
+}
+
+a.prio1 {
+    color: #0277bd;
+}
+
+a.prio2 {
+    color: #ff8f00;
+}
+
+a.prio3 {
+    color: #f44336;
+}
+
+li.prio0 {
+    background: #fafafa;
+    border-bottom: 1px solid #616161;
+}
+
+li.prio0:hover {
+    background: #eeeeee;
+}
+
+li.prio1 {
+    background: #e1f5fe;
+    border-bottom: 1px solid #0277bd;
+}
+
+li.prio1:hover {
+    background: #b3e5fc;
+}
+
+li.prio2 {
+    background: #fff8e1;
+    border-bottom: 1px solid #ff8f00;
+}
+
+li.prio2:hover {
+    background: #ffecb3;
+}
+
+li.prio3 {
+    background: #ffebee;
+    border-bottom: 1px solid #f44336;
+}
+
+li.prio3:hover {
+    background: #ffcdd2;
+}
+
+.task-item {
+    padding: 5px;
+}
+
+.task-item:last-child {
+    border: 0;
+}
+
+.check-button {
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 1.5em;
+}

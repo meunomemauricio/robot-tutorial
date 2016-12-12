@@ -2,34 +2,79 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>ToDo List ({{ unchecked }})</title>
 
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}" />
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <!-- FontAwesome -->
+    <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
 </head>
-<body>
-    {% if todo_items %}
-        <form action="{% url 'todo:check' %}" method="post">
-            {% csrf_token %}
-            {% for item in todo_items %}
-                <div class="{% if item.checked %}checked{% endif %}">
-                <input type="radio" name="item-id" value="{{ item.id }}"
-                       onChange="this.form.submit()">
-                    {{ item.priority }} - {{ item.description }} - {{ item.checked }}
+<body class="grey lighten-3">
+    <nav class="grey darken-3">
+        <div class="container">
+            <div class="nav-wrapper">
+                <span class="title">ToDo Tasks ({{ unchecked }})</span>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="card-panel">
+            <div class="row">
+                <form class="col s12" action="{% url 'todo:insert' %}" method="post">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="input-field  col s12 m2">
+                            {{ form.priority }}
+                        </div>
+                        <div class="input-field col s12 m8">
+                            {{ form.description.label_tag }}
+                            {{ form.description }}
+                        </div>
+                        <div class="input-field col s12 m2">
+                            <button class="btn blue" type="submit">add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col l10 offset-l1 s12">
+                {% if todo_items %}
+                    <ul>
+                    {% for item in todo_items %}
+                        <li class="task-item prio{{item.priority}} {{item.checked|yesno:'checked,'}}">
+                            <a class="prio{{item.priority}}" href="{% url 'todo:check' %}?id={{item.id}}">
+                                <i class="check-button fa {{item.checked|yesno:'fa-check-square-o,fa-square-o'}}"></i>
+                                {{ item.description }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+
+                {% else %}
+                    <p>No items on your list! Start by adding one above...</p>
+                {% endif %}
                 </div>
-            {% endfor %}
-        </form>
+            </div>
 
-    {% else %}
-        <p>No items on your list! Start by adding one below...</p>
-    {% endif %}
-
-    <form action="{% url 'todo:insert' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="New" />
-    </form>
-
-    <a href="{% url 'todo:clear' %}" onclick="return confirm('Are you sure?');">Delete All</a>
+            <div class="row">
+                <div class="col l3 offset-l9 s12">
+                    <a class="btn red" href="{% url 'todo:clear' %}"
+                       onclick="return confirm('Are you sure?');">Delete All</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery and Materialize CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
 </body>
 </html>

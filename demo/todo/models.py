@@ -5,8 +5,8 @@ class TodoItem(models.Model):
     PRIO_CHOICES = (
         (0, 'None'),
         (1, 'Low'),
-        (3, 'Medium'),
-        (4, 'High'),
+        (2, 'Medium'),
+        (3, 'High'),
     )
 
     description = models.CharField(max_length=200)

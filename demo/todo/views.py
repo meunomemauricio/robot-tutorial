@@ -32,13 +32,13 @@ def insert(request):
 
 
 def check(request):
-    """Mark a task as done or undone."""
+    """Mark a task as done or undone.
+
+    The task ID should be sent as a GET parameter.
+    """
     try:
-        print(request.POST)
-        item_id = request.POST['item-id']
-        print(item_id)
+        item_id = request.GET['id']
         item = TodoItem.objects.get(id=item_id)
-        print(item)
     except (KeyError, TodoItem.DoesNotExist):
         # Invalid POST data, redirect to index
         return HttpResponseRedirect(reverse('todo:index'))
