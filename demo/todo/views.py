@@ -9,8 +9,8 @@ from .models import TodoItem
 def index(request):
     todo_items = TodoItem.objects.order_by('-priority')
     context = {
-        'todo_items': todo_items,
-        'unchecked': len([i for i in todo_items if not i.checked]),
+        'unchecked': [i for i in todo_items if not i.checked],
+        'checked': [i for i in todo_items if i.checked],
         'form': TodoForm(),
     }
     return render(request, template_name='todo/index.html', context=context)

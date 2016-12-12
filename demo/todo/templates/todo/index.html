@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>ToDo List ({{ unchecked }})</title>
+    <title>ToDo List ({{ unchecked|length }})</title>
 
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}" />
@@ -16,7 +16,7 @@
     <nav class="grey darken-3">
         <div class="container">
             <div class="nav-wrapper">
-                <span class="title">ToDo Tasks ({{ unchecked }})</span>
+                <span class="title">ToDo Tasks ({{ unchecked|length }})</span>
             </div>
         </div>
     </nav>
@@ -42,15 +42,23 @@
             </div>
             <div class="row">
                 <div class="col l10 offset-l1 s12">
-                {% if todo_items %}
+                {% if unchecked or checked %}
                     <ul>
-                    {% for item in todo_items %}
-                        <li class="task-item prio{{item.priority}} {{item.checked|yesno:'checked,'}}">
+                    {% for item in unchecked %}
+                        <li class="task-item prio{{item.priority}}">
                             <a class="prio{{item.priority}}" href="{% url 'todo:check' %}?id={{item.id}}">
-                                <i class="check-button fa {{item.checked|yesno:'fa-check-square-o,fa-square-o'}}"></i>
+                                <i class="check-button fa fa-square-o"></i>
                                 {{ item.description }}
                             </a>
                         </li>
+                    {% endfor %}
+                    {% for item in checked %}
+                    <li class="task-item prio{{item.priority}} checked">
+                        <a class="prio{{item.priority}}" href="{% url 'todo:check' %}?id={{item.id}}">
+                            <i class="check-button fa fa-check-square-o"></i>
+                            {{ item.description }}
+                        </a>
+                    </li>
                     {% endfor %}
                     </ul>
 
