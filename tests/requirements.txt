@@ -1,0 +1,4 @@
+robotframework==3.0.1
+robotframework-djangolibrary==1.2
+robotframework-selenium2library==1.8.0
+docutils==0.13.1
