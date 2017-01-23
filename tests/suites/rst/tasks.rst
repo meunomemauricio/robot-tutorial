@@ -11,12 +11,12 @@ checking them as completed and unchecking them again.
 
 
 Settings, Variables and Suite Setup/Teardown
---------
+--------------------------------------------
 
 This test suite uses the ``Selenium2Library`` to interact with the webpage and
 the ``DjangoLibrary`` to manage the Django Application.
 
-.. code:: robotframework
+.. code-block:: robotframework
 
     *** Settings ***
     Library         Selenium2Library  timeout=10  implicit_wait=0
@@ -31,7 +31,7 @@ content between each test case.
 Variables are simply addressing in which IP and Port the test server will be
 listening on and what browser will be used on Selenium.
 
-.. code:: robotframework
+.. code-block:: robotframework
 
     *** Variables ***
     ${HOSTNAME}             127.0.0.1
@@ -42,7 +42,7 @@ listening on and what browser will be used on Selenium.
 Suite Setup and Teardown are very straight-forward, too. They just open/close
 the test server and the browser window.
 
-.. code:: robotframework
+.. code-block:: robotframework
 
     *** Keywords ***
     Start Django and open Browser
@@ -64,7 +64,7 @@ Add a New Task to the List
 This is the most basic test. It just adds a new task to the list and make sure
 it is present with the correct name.
 
-.. code:: robotframework
+.. code-block:: robotframework
 
     *** Test Case ***
     Add a new Task to the List
@@ -80,9 +80,9 @@ Mark Task as complete
 This test clicks on a Task item that has already been created and checks if it
 has been marked as complete.
 
-The main difference between a complete task and an incomplete task is the 
+The main difference between a complete task and an incomplete task is the
 
-.. code:: robotframework
+.. code-block:: robotframework
 
     *** Test Case ***
     Mark Task as complete
@@ -97,7 +97,7 @@ Revert a Task back to incomplete
 This test clicks on a Task item that has already been marked as complete and
 check if it has been marked as incomplete again.
 
-.. code:: robotframework
+.. code-block:: robotframework
 
     *** Test Case ***
     Revert a Task to incomplete
@@ -117,7 +117,7 @@ High Level Keywords
 
 Those are the **High Level Keywords**, used on the Test Cases.
 
-.. code:: robotframework
+.. code-block:: robotframework
 
     *** Keywords ***
     I have loaded the ToDo application page
@@ -130,10 +130,10 @@ Those are the **High Level Keywords**, used on the Test Cases.
 The "add" button does not have an ``id`` associated with it. To refer to it,
 it's better to use an **XPath** directive: ``//button[text()='add']``.
 
-.. note:: XPath is a very valuable tool for testing things with Selenium. 
+.. note:: XPath is a very valuable tool for testing things with Selenium.
    I highly recommend learning it!
 
-.. code:: robotframework
+.. code-block:: robotframework
 
     *** Keywords ***
     I add a new Task named ${name}
@@ -150,7 +150,7 @@ keywords, instead of rewriting the functionality. The keywords could be used
 directly on the testcases, but creating a new keyword to aggregate them made
 the Tests more simple to read and understand.
 
-.. code:: robotframework
+.. code-block:: robotframework
 
     *** Keywords ***
     I have created a Task named ${name}
@@ -164,7 +164,7 @@ tag with the name of the task. Notice that the *XPath* only check if the **text
 contains the name**, instead of performing an exact match. This is important
 because the ``a`` tag also contains an icon in its text.
 
-.. code:: robotframework
+.. code-block:: robotframework
 
     *** Keywords ***
     I click on the ${name} Task
@@ -175,7 +175,7 @@ store it in an variable and check it against a Regexp. Once again, **XPath** is
 used, this expression being specially tricky. It's supposed to match a ``li``
 tag with an ``a`` tag inside, containing the Task name in its text.
 
-.. code:: robotframework
+.. code-block:: robotframework
 
     *** Keywords ***
     Check Task item class
@@ -191,8 +191,8 @@ In Keyword called ``Wait Until Keyword Succeeds`` (`Reference
 The alternative would be to include a fixed delay, but this is **a bad idea**.
 This creates unnecessary delays and can make the execution of tests very slow
 as the number of tests increase.
-    
-.. code:: robotframework
+
+.. code-block:: robotframework
 
     *** Keywords ***
     the ${name} is marked is complete
