@@ -1,9 +1,11 @@
-Robot Tutorial
-==============
+Tutorial Introdutório de Robot Framework
+========================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Conteúdo:
 
-   rst/index
+   tutorial/introduction
+   tutorial/rst_docs
+
 

@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introdução &mdash; robot-tutorial 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="robot-tutorial 1.0 documentation" href="../index.html"/>
+        <link rel="next" title="Embutindo Teste Suites em documentação RST" href="rst_docs.html"/>
+        <link rel="prev" title="Tutorial Introdutório de Robot Framework" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> robot-tutorial
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Conteúdo:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introdução</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sobre-o-framework">Sobre o Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#porque-usar-o-robot">Porque usar o Robot?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bibliotecas-de-teste">Bibliotecas de Teste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arquitetura">Arquitetura</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rst_docs.html">Embutindo Teste Suites em documentação RST</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">robot-tutorial</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Introdução</li>
+    <li class="wy-breadcrumbs-aside">
+      
+          
+          <a href="../_sources/tutorial/introduction.rst.txt" rel="nofollow"> View page source</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introducao">
+<h1>Introdução<a class="headerlink" href="#introducao" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sobre-o-framework">
+<h2>Sobre o Framework<a class="headerlink" href="#sobre-o-framework" title="Permalink to this headline">¶</a></h2>
+<p>O Robot é um <strong>Framework Genérico de Automação de Testes</strong>. É considerado
+genérico porque ele serve para testar qualquer tipo de sistema, independente da
+linguagem em que ele é escrito e de suas interfaces de usuário (CLI, GUI, Web,
+etc...).</p>
+<p>O foco dele é em <strong>Testes de Aceitação</strong>, ou seja, testes que garantem que as
+especificações do usuário estão sendo atendidas pelo software. Tem como
+escrever testes de unidade? Até tem, mas não tem porque, já que existem
+ferramentas bem mais práticas pra isso (pytest, nosetest, etc...).</p>
+<p>A ferramenta é <strong>escrita em Python</strong>, podendo ser executada nos principais
+interpretadores Python (CPython/Jython/IronPython) e o código pode ser acessado
+em <a class="reference external" href="https://github.com/robotframework/robotframework">seu repositório GitHub</a>.</p>
+<p>Vale comentar também que a partir da versão 3.0, o Robot pode se executado no
+Python 3, porém fica o aviso de que algumas bibliotecas de teste ainda não
+foram portadas (como é o caso da <code class="docutils literal"><span class="pre">Selenium2Library</span></code>).</p>
+</div>
+<div class="section" id="porque-usar-o-robot">
+<h2>Porque usar o Robot?<a class="headerlink" href="#porque-usar-o-robot" title="Permalink to this headline">¶</a></h2>
+<p>O grande propósito de se utilizar um framework de testes é <strong>uniformizar a
+maneira de escrever os testes</strong>. É importante que todos as equipes trabalhando
+no mesmo projeto “falem a mesma língua” na hora de escrever testes. Isso vai
+além da linguagem da programação.</p>
+<p>Testes de Unidade são escritos <em>pelos desenvolvedores, para os próprios
+desenvolvedores</em>. Então não é problema eles serem um pouco mais &#8220;crípticos&#8221;, já
+que só precisam ser entendidos por quem está escrevendo código. No caso dos
+Testes de Aceitação, <strong>é muito mais importante escrever os testes em uma
+linguagem acessível e mais humana</strong>, já que provavelmente outros Stakeholders
+do projeto (Product Owner, Gerentes de negócio, time de QA, etc...) dependam de
+ler o que está sendo testado de forma a ter visibilidade da cobertura de testes
+automáticos.</p>
+<p>Para atingir essa uniformização, o Robot aposta em uma <strong>sintaxe simples e
+tabular</strong>, apresentando o conceito de <strong>Keywords</strong>, que são frases que
+expressam claramente a intenção de uma ação ou verificação que será feita no
+sistema sendo testado. Definindo bem as Keywords de um teste, é possível
+deixá-los tão legíveis que muitas vezes não é necessário documentação ou
+comentários adicionais para entender o que os testes estão fazendo.</p>
+</div>
+<div class="section" id="bibliotecas-de-teste">
+<h2>Bibliotecas de Teste<a class="headerlink" href="#bibliotecas-de-teste" title="Permalink to this headline">¶</a></h2>
+<p>Como expliquei anteriormente, o Robot busca ser um framework genérico. Ele
+seria uma monstruosidade se tentasse implementar tudo o que é necessário pra se
+interfacear com todo tipo de sistema possível e imaginável. O que ele faz então
+é disponibilizar <strong>uma API simples</strong> que permite a criação de <strong>Bibliotecas de
+Teste.</strong></p>
+<p>Isso não significa que é preciso reinventar a roda. Existem algumas bibliotecas
+simples que já são integradas ao Robot (<a class="reference external" href="http://robotframework.org/#libraries-standard">Internal Libraries</a>) para
+funcionalidades comuns à maioria dos projetos (manipular strings, XML, executar
+comandos no sistema operacional, etc...).</p>
+<p>Há também disponíveis algumas bibliotecas externas (<a class="reference external" href="http://robotframework.org/#libraries-external">External Libraries</a>) que
+utilizam ferramentas de teste (e.g.  Selenium, Appium, SSH, etc...). Estas
+bibliotecas podem ser instaladas facilmente através de um <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></code>.</p>
+<p>É somente no caso de precisar de uma interface específica do projeto, ou
+precisar expandir alguma das bibliotecas já existentes é que a gente acaba
+botando a mão na massa e escrevendo código Python.</p>
+</div>
+<div class="section" id="arquitetura">
+<h2>Arquitetura<a class="headerlink" href="#arquitetura" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rst_docs.html" class="btn btn-neutral float-right" title="Embutindo Teste Suites em documentação RST" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Tutorial Introdutório de Robot Framework" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Mauricio Freitas.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
